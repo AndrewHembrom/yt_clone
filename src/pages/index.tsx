@@ -1,20 +1,26 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { VideoCard } from '@/components/VideoCard';
+import { VideoGrid } from "@/components/VideoGrid";
+import { Appbar } from "@/components/Appbar";
+import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <div>
-      <VideoCard
-        title={"What is Barca Cooking?"}
-        thumb={"thumbnail.png"}
-        profile={"profile.jpg"}
-        channel={"Visca Barca"}
-        views={"100M"}
-        timestamp={"1 day ago"}
-      ></VideoCard>
+      <Appbar />
+      <div className="flex">
+        <Sidebar />
+        <div className="w-full overflow-x-auto">
+          <div className="sm:h-[calc(99vh-60px)] overflow-auto">
+            <div className="w-full justify-center mx-auto overflow-auto h-[calc(100vh-120px)] overflow-y-auto relative">
+              <VideoGrid/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
